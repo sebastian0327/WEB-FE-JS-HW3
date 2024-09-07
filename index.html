@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="JavaScript" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <header>
+        <h1>JavaScript concepts</h1>
+    </header>
+    <main>
+        <div class="blog">
+            <div class="title">
+                <h2>JavaScript Async</h2>
+            </div>
+            <div class="exp-text">
+                <h4>JavaScript async functions are part of its asynchronous programming model, allowing you to write
+                    asynchronous code in a way that looks synchronous, making it more readable and easier to work with.
+                    JavaScript is single-threaded, meaning it executes one thing at a time. However, tasks like fetching
+                    data
+                    from a server or reading a file take time, and instead of waiting and blocking other operations,
+                    JavaScript
+                    uses asynchronous patterns to handle these tasks.</h4>
+                <h4>The async keyword is used to declare an asynchronous function. It ensures that the function always
+                    returns a
+                    promise, and wraps its return value in a Promise.resolve(). If the function throws an error, it will
+                    automatically return it as a rejected promise.</h4>
+                <div class="code-box">
+                    <pre><code>
+        async function fetchData() {
+            return "Data fetched!";
+          }
+        fetchData().then(data => console.log(data));  // "Data fetched!"
+            </code></pre>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="blog">
+            <div class="title">
+                <h2>JavaScript Callback</h2>
+            </div>
+            <div class="exp-text">
+                <h4>JavaScript functions are first-class objects, meaning they can be passed as arguments, returned by
+                    other
+                    functions, and assigned to variables. A callback is simply a function that you pass to another
+                    function
+                    so that it can be called after some task is done.</h4>
+                <h4>In this case, the callback is executed immediately, as part of a normal, synchronous operation:</h4>
+                <div class="code-box">
+                    <pre><code>
+        function greet(name, callback) {
+            console.log("Hello " + name);
+            callback();
+            }
+                                
+        function sayGoodbye() {
+            console.log("Goodbye!");
+            }
+                                
+        greet("Alice", sayGoodbye);
+                </code></pre>
+                </div>
+
+                <h4>Out put</h4>
+                <div class="code-box">
+                    <pre><samp>
+            Hello Alice
+            Goodbye!
+                </samp></pre>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="blog">
+            <div class="title">
+                <h2>JavaScript Promise</h2>
+            </div>
+            <div class="exp-text">
+                <h4>In JavaScript, a Promise is an object representing the eventual completion or failure of an
+                    asynchronous operation. Promises provide a more structured and readable way to handle asynchronous
+                    actions compared to traditional callback functions, allowing you to chain multiple actions in a
+                    clean and manageable way.</h4>
+                <div class="code-box">
+                    <pre><code>
+        const myPromise = new Promise((resolve, reject) => {
+        // Simulate an asynchronous operation (e.g., fetching data)
+        let success = true;
+                            
+        if (success) {
+            resolve("Operation successful!");
+        } else {
+            reject("Operation failed.");
+            }
+        });
+            </code></pre>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="blog">
+            <div class="title">
+                <h2>JavaScript Async/Await</h2>
+            </div>
+            <div class="exp-text">
+                <h4>The await keyword can only be used inside an async function. It makes JavaScript wait for a promise
+                    to resolve before proceeding with the execution of the next lines of code. Essentially, it pauses
+                    the function until the awaited promise is resolved or rejected.</h4>
+                <div class="code-box">
+                    <pre><code>
+        async function fetchData() {
+            let response = await fetch('https://api.example.com/data');
+            let data = await response.json();
+            console.log(data);
+        }
+            </code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="blog">
+            <div class="title">
+                <h2>JavaScript Event Loop</h2>
+            </div>
+            <div class="exp-text">
+                <h4>
+                    The Event Loop in JavaScript is a fundamental concept that manages how asynchronous code is executed
+                    and ensures that operations like I/O (input/output) don't block the main thread. JavaScript is
+                    single-threaded, meaning it can only execute one task at a time, yet it handles multiple tasks
+                    seemingly in parallel thanks to the event loop.
+                </h4>
+                <h4>
+                    How the Event Loop Works
+                    In JavaScript, especially in the browser or Node.js, the execution of code happens through a
+                    combination of:
+                </h4>
+                <ol>
+                    <li>Call Stack</li>
+                    <li> Task Queue (Callback Queue)</li>
+                    <li> Microtask Queue</li>
+                    <li> Event Loop</li>
+                </ol>
+                <div class="code-box">
+                    <pre><code>
+            console.log('Start');
+
+            setTimeout(() => {
+                console.log('Timeout 1');
+            }, 0);
+                        
+            setTimeout(() => {
+                console.log('Timeout 2');
+            }, 0);
+                        
+            Promise.resolve().then(() => {
+                console.log('Promise 1');
+            }).then(() => {
+                console.log('Promise 2');
+            });
+                        
+            console.log('End');
+            </code></pre>
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
+
+
+
+
+</body>
